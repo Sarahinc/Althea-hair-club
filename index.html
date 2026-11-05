@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altheá Hair SAS - Cuidado Capilar</title>
+<style>
+  :root{
+    --cafecito:#8b5a3c;
+    --cafe-medio:#a67c52;
+    --cafe-claro:#c29a74;
+    --mostaza:#d4a017;
+    --mostaza-claro:#e8b93d;
+    --beige:#f5e6d3;
+    --beige-suave:#efe1d1;
+    --terracota:#d4a373;
+    --terracota-oscuro:#b07a54;
+    --crema:#fdfaf6;
+    --crema-claro:#f7f2ea;
+    --texto:#3d3a36;
+    --texto-suave:#6e6860;
+    --borde:#e3d9cc;
+    --blanco:#ffffff;
+    --amarillo-pastel:#fff7b1;
+    --piel-fuerte:#c29a74;
+    --piel-suave:#e8c39e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--crema-claro);
+    color:var(--texto);
+    line-height:1.6
+  }
+  a{text-decoration:none;color:inherit}
+  img{display:block;margin:0 auto;max-width:100%;height:auto}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* Decorative lines */
+  .deco-line{
+    height:4px;
+    width:120px;
+    margin:12px auto;
+    background:linear-gradient(90deg,var(--cafecito),var(--mostaza));
+    border-radius:2px
+  }
+  .deco-line-marca{
+    height:3px;
+    width:80px;
+    margin:8px auto;
+    background:var(--mostaza);
+    border-radius:2px
+  }
+  .divider{display:flex;align-items:center;justify-content:center;gap:16px;margin:40px 0;color:var(--texto-suave);font-size:0.85rem}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--borde)}
+
+  /* Header */
+  header{
+    background:var(--blanco);
+    border-bottom:2px solid var(--borde);
+    position:sticky;top:0;z-index:100
+  }
+  .top-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;font-size:0.85rem;color:var(--texto-suave);border-bottom:1px solid var(--borde)
+  }
+  .top-bar .nit{font-weight:700;color:var(--cafecito)}
+  .top-bar .ubicacion span{color:var(--cafe-medio)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .logo{display:flex;align-items:center;gap:14px;cursor:pointer}
+  .logo img{height:52px;width:auto}
+  .logo-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.9rem;color:var(--cafecito);letter-spacing:0.5px}
+  .logo-text span{display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--texto-suave);margin-top:2px}
+  .eslogan{font-style:italic;color:var(--texto-suave);font-size:0.9rem}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{font-size:0.9rem;font-weight:600;color:var(--texto);transition:color .2s}
+  .nav-links a:hover{color:var(--cafecito)}
+  .cart-btn{
+    background:none;border:none;color:var(--cafecito);font-size:1.4rem;cursor:pointer;position:relative;padding:8px
+  }
+  .cart-count{
+    position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--mostaza);color:#fff;
+    border-radius:50%;font-size:0.7rem;display:flex;align-items:center;justify-content:center;font-weight:700
+  }
+  .btn-menu{display:none;background:none;border:none;font-size:1.5rem;color:var(--cafecito);cursor:pointer}
+
+  /* Hero */
+  .hero{
+    position:relative;padding:80px 0 110px;
+    background:linear-gradient(180deg,#fff 0%,var(--crema-claro) 55%,var(--beige-suave) 100%);
+    overflow:hidden
+  }
+  .hero::before{
+    content:"";position:absolute;top:-80px;left:-80px;width:400px;height:400px;
+    background:radial-gradient(circle,rgba(212,160,23,.15),transparent 70%);border-radius:50%;z-index:0
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-60px;right:-60px;width:350px;height:350px;
+    background:radial-gradient(circle,rgba(139,90,60,.12),transparent 70%);border-radius:50%;z-index:0
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+  .hero h1{font-size:3rem;line-height:1.1;color:var(--cafecito);margin-bottom:18px}
+  .hero p{color:var(--texto-suave);font-size:1.05rem;margin-bottom:26px;max-width:520px}
+  .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    padding:14px 30px;border-radius:50px;font-weight:600;font-size:0.9rem;cursor:pointer;transition:all .25s;border:none;display:inline-block
+  }
+  .btn-primary{background:var(--cafecito);color:#fff;box-shadow:0 6px 20px rgba(139,90,60,.25)}
+  .btn-primary:hover{background:var(--cafe-medio);transform:translateY(-2px);box-shadow:0 10px 28px rgba(139,90,60,.35)}
+  .btn-outline{background:transparent;border:2px solid var(--cafecito);color:var(--cafecito)}
+  .btn-outline:hover{background:var(--cafecito);color:#fff}
+  .hero-image{position:relative}
+  .hero-image img{border-radius:24px;box-shadow:0 25px 70px rgba(0,0,0,.12);border:8px solid var(--blanco);max-width:520px}
+  .badge{
+    position:absolute;bottom:-20px;left:30px;background:var(--blanco);padding:14px 24px;border-radius:16px;
+    box-shadow:0 12px 34px rgba(0,0,0,.12);border:1px solid var(--borde);display:flex;align-items:center;gap:12px;z-index:2
+  }
+  .badge .dot{width:12px;height:12px;border-radius:50%;background:var(--mostaza)}
+  .badge span{font-size:0.85rem;font-weight:700;color:var(--cafecito)}
+
+  /* Sections */
+  section{padding:80px 0}
+  .section-header{text-align:center;margin-bottom:50px}
+  .section-header .kicker{display:inline-block;padding:8px 20px;border-radius:24px;background:rgba(139,90,60,.10);color:var(--cafecito);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+  .section-header h2{font-size:2.2rem;color:var(--cafecito);margin-bottom:14px}
+  .section-header p{color:var(--texto-suave);max-width:720px;margin:0 auto;font-size:1rem}
+
+  /* Filosofía */
+  .filosofia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+  .card{
+    background:var(--blanco);padding:32px 24px;border-radius:22px;border:1px solid var(--borde);text-align:center;
+    transition:all .25s;position:relative;overflow:hidden
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--cafecito),var(--mostaza))
+  }
+  .card .icon{width:52px;height:52px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff}
+  .mision .icon{background:var(--cafecito)}
+  .vision .icon{background:var(--cafe-medio)}
+  .eslogan-card .icon{background:var(--mostaza)}
+  .card h3{font-size:1.2rem;color:var(--cafecito);margin-bottom:12px}
+  .card p{font-size:0.92rem;color:var(--texto-suave);line-height:1.6}
+
+  /* Valores */
+  .valores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+  .valor{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:18px 12px;text-align:center;
+    font-size:0.85rem;font-weight:600;color:var(--texto-suave);transition:all .2s
+  }
+  .valor:hover{background:var(--beige-suave);color:var(--cafecito);border-color:var(--mostaza)}
+
+  /* Productos */
+  .linea-header{
+    text-align:center;margin-bottom:45px;padding:40px 24px;border-radius:24px;position:relative;overflow:hidden
+  }
+  .linea-header.cacao{background:linear-gradient(135deg,var(--beige),var(--beige-suave))}
+  .linea-header.maracuya{background:linear-gradient(135deg,var(--mostaza-claro),var(--mostaza))}
+  .linea-header h2{font-size:2rem;margin-bottom:10px}
+  .linea-header.cacao h2{color:var(--cafecito)}
+  .linea-header.maracuya h2{color:#fff}
+  .linea-header p{color:var(--texto-suave);font-size:0.95rem}
+  .linea-header.maracuya p{color:rgba(255,255,255,.92)}
+
+  .productos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+  .producto{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:22px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column
+  }
+  .producto:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.09);border-color:transparent}
+  .producto img{width:100%;height:230px;object-fit:cover;background:var(--crema)}
+  .producto.cacao{border-top:5px solid var(--cafecito)}
+  .producto.maracuya{border-top:5px solid var(--mostaza)}
+  .producto-info{padding:24px;display:flex;flex-direction:column;flex:1;position:relative}
+  .producto .tipo{display:inline-block;padding:6px 16px;border-radius:20px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+  .cacao .tipo{background:rgba(139,90,60,.12);color:var(--cafecito)}
+  .maracuya .tipo{background:rgba(212,160,23,.16);color:#b07a1e}
+  .producto h3{font-size:1.2rem;color:var(--cafecito);margin-bottom:10px}
+  .producto p{font-size:0.9rem;color:var(--texto-suave);margin-bottom:auto;flex:1}
+  .producto ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .producto li{font-size:0.86rem;color:var(--texto-suave);position:relative;padding-left:16px}
+  .producto li:before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--mostaza)}
+  .like-btn{
+    position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;background:var(--blanco);
+    border:1px solid var(--borde);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;color:var(--texto-suave);transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)
+  }
+  .like-btn:hover{background:var(--mostaza);color:#fff;border-color:var(--mostaza)}
+  .like-btn.liked{background:var(--mostaza);color:#fff;transform:scale(1.1)}
+
+  /* Likes list */
+  .likes-section{background:var(--blanco);border:1px solid var(--borde);border-radius:24px;padding:40px 30px}
+  .likes-section h3{font-size:1.4rem;color:var(--cafecito);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .likes-list{list-style:none;display:flex;flex-wrap:wrap;gap:14px}
+  .likes-list li{
+    background:var(--beige-suave);border:1px solid var(--borde);border-radius:14px;padding:10px 16px;
+    font-size:0.9rem;color:var(--texto-suave);display:flex;align-items:center;gap:8px
+  }
+  .likes-list li.empty{color:var(--texto-suave);font-style:italic;background:transparent;border:none;padding:0}
+
+  /* Equipo */
+  .equipo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px}
+  .miembro{
+    background:var(--blanco);border-radius:22px;text-align:center;padding:32px 20px;transition:all .25s;position:relative;overflow:hidden
+  }
+  .miembro:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.10)}
+  .miembro .foto{width:104px;height:104px;border-radius:50%;margin:0 auto 18px;background:var(--amarillo-pastel);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--cafecito);border:4px solid var(--piel-fuerte);box-shadow:0 0 20px rgba(194,154,116,.55)}
+  .miembro h3{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.3rem;color:var(--cafecito);margin-bottom:6px}
+  .miembro p{font-size:0.86rem;color:var(--texto-suave);margin-bottom:6px}
+  .miembro .cargo{font-size:0.8rem;color:var(--cafe-medio);font-weight:600}
+  .equipo-org{text-align:center;margin-top:40px}
+  .equipo-org img{max-width:750px;border-radius:20px;border:2px solid var(--borde);box-shadow:0 12px 36px rgba(0,0,0,.08)}
+
+  /* Redes */
+  .redes{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:22px;padding:40px;text-align:center
+  }
+  .redes h3{font-size:1.3rem;color:var(--cafecito);margin-bottom:12px}
+  .redes p{color:var(--texto-suave);margin-bottom:24px}
+  .redes-links{display:flex;justify-content:center;gap:24px}
+  .redes-links a{
+    width:56px;height:56px;border-radius:50%;background:var(--beige-suave);display:flex;align-items:center;justify-content:center;
+    color:var(--texto-suave);font-size:1.4rem;transition:all .25s;border:2px solid transparent
+  }
+  .redes-links a:hover{background:var(--cafecito);color:#fff;border-color:var(--cafecito);transform:translateY(-3px)}
+
+  /* Contacto */
+  .contacto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  .contacto-card{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:22px;padding:34px 26px
+  }
+  .contacto-card h3{font-size:1.15rem;color:var(--cafecito);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .contacto-card p,.contacto-card li{font-size:0.9rem;color:var(--texto-suave);margin-bottom:10px}
+  .contacto-card .nit-box{
+    margin-top:16px;padding:14px;background:var(--beige-suave);border-radius:14px;border:1px dashed var(--borde);font-size:0.88rem;color:var(--texto-suave)
+  }
+  .contacto-card .nit-box b{color:var(--cafecito)}
+
+  /* Footer */
+  footer{
+    background:var(--cafecito);color:#fff;padding:56px 0 32px
+  }
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:34px;margin-bottom:38px}
+  .footer-col h4{font-size:1rem;color:#fff;margin-bottom:18px;position:relative;padding-left:10px}
+  .footer-col h4::before{content:"";position:absolute;left:0;top:6px;width:4px;height:14px;background:var(--mostaza);border-radius:2px}
+  .footer-col p,.footer-col li{font-size:0.85rem;color:#d9cdbf;line-height:1.7;margin-bottom:8px}
+  .footer-bottom{border-top:1px solid rgba(217,205,191,.25);padding-top:24px;text-align:center;font-size:0.8rem;color:#b8a998}
+
+  /* Responsive */
+  @media(max-width:768px){
+    .hero-grid,.productos-grid,.equipo-grid,.contacto-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .btn-menu{display:block}
+    .hero h1{font-size:2.2rem}
+    .hero-image img{max-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container top-bar">
+    <div class="nit">NIT: <span id="nit-valor">[Por diligenciar]</span></div>
+    <div class="ubicacion"><span>Las Américas, Bogotá D.C.</span> · Colombia</div>
+  </div>
+  <div class="container nav">
+    <div class="logo" onclick="scrollToTop()">
+      <img src="Logo.png" alt="Logo Altheá Hair">
+      <div class="logo-text">Altheá<span>HAIR</span></div>
+      <div class="eslogan">Belleza real, cuidado esencial</div>
+    </div>
+    <button class="btn-menu" id="btnMenu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#productos">Productos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#redes">Redes</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button class="cart-btn" title="Carrito de mercado">
+      🛒
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <h1>Cuidado capilar con esencia botánica</h1>
+      <p>Productos a base de extractos botánicos y análisis tricológico para fuerza, brillo, hidratación y un cuero cabelludo sano.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToSection('#productos')">Conocer líneas</button>
+        <button class="btn btn-outline" onclick="scrollToSection('#nosotros')">Nuestra filosofía</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="Logo.png" alt="Logo Altheá Hair">
+      <div class="badge"><div class="dot"></div><span>SAS · Bogotá, Colombia</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros" class="filosofia">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Filosofía empresarial</span>
+      <h2>Misión, visión y valores</h2>
+      <p>Los principios que guían cada producto y cada asesoría en Altheá Hair SAS.</p>
+    </div>
+    <div class="filosofia-grid">
+      <div class="card mision">
+        <div class="icon">M</div>
+        <h3>Misión</h3>
+        <p>Trabajamos por el bienestar capilar de nuestros consumidores a través de productos a base de extractos botánicos y análisis tricológico, garantizando una asesoría completa para la correcta elección de nuestros productos y una satisfacción total.</p>
+      </div>
+      <div class="card vision">
+        <div class="icon">V</div>
+        <h3>Visión</h3>
+        <p>Posicionarnos en los próximos cinco años a nivel nacional como uno de los principales líderes en el cuidado capilar sostenible y la innovación, con gestión ambiental y cultural, rentabilidad y empleos inclusivos.</p>
+      </div>
+      <div class="card eslogan-card">
+        <div class="icon">E</div>
+        <h3>Eslogan</h3>
+        <p><strong>Belleza real, cuidado esencial</strong></p>
+      </div>
+    </div>
+    <div class="section-header" style="margin-top:40px">
+      <span class="kicker">Valores</span>
+      <h2>Nuestros valores</h2>
+      <p>Respeto, inclusión, conciencia ecológica, transparencia, altruismo, solidaridad y trabajo en equipo.</p>
+    </div>
+    <div class="valores-grid">
+      <div class="valor">Respeto</div>
+      <div class="valor">Inclusión</div>
+      <div class="valor">Conciencia ecológica</div>
+      <div class="valor">Transparencia</div>
+      <div class="valor">Altruismo</div>
+      <div class="valor">Solidaridad</div>
+      <div class="valor">Trabajo en equipo</div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Líneas capilares</span>
+      <h2>Dos líneas de productos</h2>
+      <p>Fórmulas con extractos botánicos diseñadas para distintas necesidades capilares.</p>
+    </div>
+
+    <div class="linea-header cacao">
+      <div class="deco-line-marca"></div>
+      <h2>Línea Cebada y Cacao</h2>
+      <p>Nutrición y fuerza para tu cabello con tonos tierra y calidez natural.</p>
+    </div>
+    <div class="productos-grid">
+      <div class="producto cacao">
+        <img src="cebada y cacao.jpg" alt="Cebada y cacao">
+        <button class="like-btn" data-product="Portada Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Portada</h3>
+          <p>Imagen representativa de la línea de cebada y cacao.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="acondicionador de cebada y cacao.jpg" alt="Acondicionador cebada y cacao">
+        <button class="like-btn" data-product="Acondicionador Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Acondicionador</h3>
+          <p>Hidratación y suavidad para el cabello.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="crema de peinar de cebada y cacao.jpg" alt="Crema de peinar cebada y cacao">
+        <button class="like-btn" data-product="Crema de peinar Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Crema de peinar</h3>
+          <p>Definición y control sin apelmazar.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="gel de cebada y cacao.jpg" alt="Gel cebada y cacao">
+        <button class="like-btn" data-product="Gel Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Gel</h3>
+          <p>Fijación natural con extractos botánicos.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="mascarilla de cebada y cacao.jpg" alt="Mascarilla cebada y cacao">
+        <button class="like-btn" data-product="Mascarilla Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Mascarilla</h3>
+          <p>Reparación profunda con cacao y cebada.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="mousse de cebada y cacao.jpg" alt="Mousse cebada y cacao">
+        <button class="like-btn" data-product="Mousse Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Mousse</h3>
+          <p>Volumen y textura ligera.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">Entre extractos y naturaleza</div>
+
+    <div class="linea-header maracuya">
+      <div class="deco-line-marca"></div>
+      <h2>Línea Maracuyá</h2>
+      <p>Hidratación y vitalidad con el poder de la fruta de la pasión.</p>
+    </div>
+    <div class="productos-grid">
+      <div class="producto maracuya">
+        <img src="Gemini_Generated_Image_mgmmqkmgmmqkmgmm.jpg" alt="Maracuyá">
+        <button class="like-btn" data-product="Portada Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Portada</h3>
+          <p>Imagen representativa de la línea de maracuyá.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="Gemini_Generated_Image_vmb4aqvmb4aqvmb4.jpg" alt="Maracuyá">
+        <button class="like-btn" data-product="Imagen complementaria Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Imagen complementaria</h3>
+          <p>Frescura y vitalidad capilar.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="acondicionador de maracuya y almendra.jpg" alt="Acondicionador maracuyá">
+        <button class="like-btn" data-product="Acondicionador Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Acondicionador</h3>
+          <p>Hidratación y suavidad para el cabello.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="crema de peinar de maracuya y almendra.jpg" alt="Crema de peinar maracuyá">
+        <button class="like-btn" data-product="Crema de peinar Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Crema de peinar</h3>
+          <p>Definición y control del frizz.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="gel de maracuya y almendra.jpg" alt="Gel maracuyá">
+        <button class="like-btn" data-product="Gel Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Gel</h3>
+          <p>Fijación con toque natural.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="mascarilla de maracuya y almendra.jpg" alt="Mascarilla maracuyá">
+        <button class="like-btn" data-product="Mascarilla Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Mascarilla</h3>
+          <p>Nutrición intensiva con maracuyá.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="mousse de maracuya y almendra.jpg" alt="Mousse maracuyá">
+        <button class="like-btn" data-product="Mousse Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Mousse</h3>
+          <p>Volumen y textura aérea.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="likes-section" id="likes">
+  <div class="container">
+    <h3>💛 Tus productos favoritos</h3>
+    <ul class="likes-list" id="likes-list">
+      <li class="empty">Aún no has marcado ningún producto como favorito.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Detrás de Altheá</span>
+      <h2>Nuestro equipo</h2>
+      <p>Profesionales comprometidos con tu bienestar capilar.</p>
+    </div>
+    <div class="equipo-grid">
+      <div class="miembro">
+        <div class="foto">M</div>
+        <h3>Mariana Caro</h3>
+        <p>Dueña y abogada</p>
+        <p class="cargo">Gerencia General · Legal</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">J</div>
+        <h3>Juan Luis Ávila</h3>
+        <p>Contador</p>
+        <p class="cargo">Contabilidad</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">S</div>
+        <h3>Samuel Laverdé</h3>
+        <p>Publicista</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">Sa</div>
+        <h3>Sarah Hincapié</h3>
+        <p>Gerente administrativo</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">Q</div>
+        <h3>Jailyn Prada</h3>
+        <p>Productora y química</p>
+        <p class="cargo">I+D y producción</p>
+      </div>
+    </div>
+    <div class="equipo-org">
+      <img src="organizacion.png" alt="Organigrama Altheá Hair">
+    </div>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="container">
+    <div class="redes">
+      <h3>Síguenos</h3>
+      <p>Espacio para las redes sociales de Altheá Hair SAS.</p>
+      <div class="redes-links">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-card">
+        <h3>Ubicación</h3>
+        <p><strong>Las Américas, Bogotá D.C., Colombia</strong></p>
+        <p>Punto clave y de fácil acceso para nuestros clientes.</p>
+        <div class="nit-box">
+          <b>NIT:</b> <span id="nit-contacto">[Por diligenciar]</span>
+        </div>
+      </div>
+      <div class="contacto-card">
+        <h3>Contacto</h3>
+        <p>Asesoría tricológica y venta de productos.</p>
+        <p>Escríbenos por WhatsApp o Instagram.</p>
+      </div>
+      <div class="contacto-card">
+        <h3>Propietarios</h3>
+        <ul>
+          <li>Mariana Caro — Dueña y abogada</li>
+          <li>Juan Luis Ávila — Contador</li>
+          <li>Samuel Laverdé — Publicista</li>
+          <li>Sarah Hincapié — Gerente administrativo</li>
+          <li>Jailyn Prada — Productora y química</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <img src="Logo.png" alt="Logo" style="height:36px;width:auto">
+          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.2rem;color:#fff">Altheá<span style="display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;color:#d9cdbf">HAIR</span></div>
+        </div>
+        <p style="font-size:0.8rem;color:#b8a998">Cuidado capilar con extractos botánicos y análisis tricológico.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <p>Altheá Hair SAS</p>
+        <p>Las Américas, Bogotá D.C., Colombia</p>
+        <p>NIT: <span id="nit-footer">[Por diligenciar]</span></p>
+      </div>
+      <div class="footer-col">
+        <h4>Filosofía</h4>
+        <p>Misión, visión y valores para el bienestar capilar sostenible.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Altheá Hair SAS. Belleza real, cuidado esencial. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const NIT = '';
+  const nitEls = document.querySelectorAll('#nit-valor, #nit-contacto, #nit-footer');
+  nitEls.forEach(el => el.textContent = NIT || '[Por diligenciar]');
+
+  const btnMenu = document.getElementById('btnMenu');
+  const navLinks = document.getElementById('navLinks');
+  btnMenu.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  function scrollToSection(selector){
+    document.querySelector(selector).scrollIntoView({behavior:'smooth'});
+  }
+  function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',e=>{
+      const target=document.querySelector(anchor.getAttribute('href'));
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+
+  /* Like system */
+  const likesList = document.getElementById('likes-list');
+  let likes = [];
+
+  document.querySelectorAll('.like-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const name = btn.getAttribute('data-product');
+      const isLiked = btn.classList.toggle('liked');
+      btn.textContent = isLiked ? '♥' : '♡';
+
+      if(isLiked){
+        likes.push(name);
+      } else {
+        likes = likes.filter(l => l !== name);
+      }
+      renderLikes();
+    });
+  });
+
+  function renderLikes(){
+    likesList.innerHTML = '';
+    if(likes.length === 0){
+      const li = document.createElement('li');
+      li.className = 'empty';
+      li.textContent = 'Aún no has marcado ningún producto como favorito.';
+      likesList.appendChild(li);
+      return;
+    }
+    likes.forEach(name=>{
+      const li = document.createElement('li');
+      li.innerHTML = '<span style="color:var(--mostaza);font-weight:700">♥</span>' + name;
+      likesList.appendChild(li);
+    });
+  }
+
+  /* Cart counter (visual only) */
+  let cart = 0;
+  const cartCount = document.getElementById('cart-count');
+  document.querySelector('.cart-btn').addEventListener('click',()=>{
+    cart++;
+    cartCount.textContent = cart;
+  });
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altheá Hair SAS - Cuidado Capilar</title>
+<style>
+  :root{
+    --cafecito:#8b5a3c;
+    --cafe-medio:#a67c52;
+    --cafe-claro:#c29a74;
+    --mostaza:#d4a017;
+    --mostaza-claro:#e8b93d;
+    --beige:#f5e6d3;
+    --beige-suave:#efe1d1;
+    --terracota:#d4a373;
+    --terracota-oscuro:#b07a54;
+    --crema:#fdfaf6;
+    --crema-claro:#f7f2ea;
+    --texto:#3d3a36;
+    --texto-suave:#6e6860;
+    --borde:#e3d9cc;
+    --blanco:#ffffff;
+    --amarillo-pastel:#fff7b1;
+    --piel-fuerte:#c29a74;
+    --piel-suave:#e8c39e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--crema-claro);
+    color:var(--texto);
+    line-height:1.6
+  }
+  a{text-decoration:none;color:inherit}
+  img{display:block;margin:0 auto;max-width:100%;height:auto}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* Decorative lines */
+  .deco-line{
+    height:4px;
+    width:120px;
+    margin:12px auto;
+    background:linear-gradient(90deg,var(--cafecito),var(--mostaza));
+    border-radius:2px
+  }
+  .deco-line-marca{
+    height:3px;
+    width:80px;
+    margin:8px auto;
+    background:var(--mostaza);
+    border-radius:2px
+  }
+  .divider{display:flex;align-items:center;justify-content:center;gap:16px;margin:40px 0;color:var(--texto-suave);font-size:0.85rem}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--borde)}
+
+  /* Header */
+  header{
+    background:var(--blanco);
+    border-bottom:2px solid var(--borde);
+    position:sticky;top:0;z-index:100
+  }
+  .top-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;font-size:0.85rem;color:var(--texto-suave);border-bottom:1px solid var(--borde)
+  }
+  .top-bar .nit{font-weight:700;color:var(--cafecito)}
+  .top-bar .ubicacion span{color:var(--cafe-medio)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .logo{display:flex;align-items:center;gap:14px;cursor:pointer}
+  .logo img{height:52px;width:auto}
+  .logo-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.9rem;color:var(--cafecito);letter-spacing:0.5px}
+  .logo-text span{display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--texto-suave);margin-top:2px}
+  .eslogan{font-style:italic;color:var(--texto-suave);font-size:0.9rem}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{font-size:0.9rem;font-weight:600;color:var(--texto);transition:color .2s}
+  .nav-links a:hover{color:var(--cafecito)}
+  .cart-btn{
+    background:none;border:none;color:var(--cafecito);font-size:1.4rem;cursor:pointer;position:relative;padding:8px
+  }
+  .cart-count{
+    position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--mostaza);color:#fff;
+    border-radius:50%;font-size:0.7rem;display:flex;align-items:center;justify-content:center;font-weight:700
+  }
+  .btn-menu{display:none;background:none;border:none;font-size:1.5rem;color:var(--cafecito);cursor:pointer}
+
+  /* Hero */
+  .hero{
+    position:relative;padding:80px 0 110px;
+    background:linear-gradient(180deg,#fff 0%,var(--crema-claro) 55%,var(--beige-suave) 100%);
+    overflow:hidden
+  }
+  .hero::before{
+    content:"";position:absolute;top:-80px;left:-80px;width:400px;height:400px;
+    background:radial-gradient(circle,rgba(212,160,23,.15),transparent 70%);border-radius:50%;z-index:0
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-60px;right:-60px;width:350px;height:350px;
+    background:radial-gradient(circle,rgba(139,90,60,.12),transparent 70%);border-radius:50%;z-index:0
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+  .hero h1{font-size:3rem;line-height:1.1;color:var(--cafecito);margin-bottom:18px}
+  .hero p{color:var(--texto-suave);font-size:1.05rem;margin-bottom:26px;max-width:520px}
+  .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    padding:14px 30px;border-radius:50px;font-weight:600;font-size:0.9rem;cursor:pointer;transition:all .25s;border:none;display:inline-block
+  }
+  .btn-primary{background:var(--cafecito);color:#fff;box-shadow:0 6px 20px rgba(139,90,60,.25)}
+  .btn-primary:hover{background:var(--cafe-medio);transform:translateY(-2px);box-shadow:0 10px 28px rgba(139,90,60,.35)}
+  .btn-outline{background:transparent;border:2px solid var(--cafecito);color:var(--cafecito)}
+  .btn-outline:hover{background:var(--cafecito);color:#fff}
+  .hero-image{position:relative}
+  .hero-image img{border-radius:24px;box-shadow:0 25px 70px rgba(0,0,0,.12);border:8px solid var(--blanco);max-width:520px}
+  .badge{
+    position:absolute;bottom:-20px;left:30px;background:var(--blanco);padding:14px 24px;border-radius:16px;
+    box-shadow:0 12px 34px rgba(0,0,0,.12);border:1px solid var(--borde);display:flex;align-items:center;gap:12px;z-index:2
+  }
+  .badge .dot{width:12px;height:12px;border-radius:50%;background:var(--mostaza)}
+  .badge span{font-size:0.85rem;font-weight:700;color:var(--cafecito)}
+
+  /* Sections */
+  section{padding:80px 0}
+  .section-header{text-align:center;margin-bottom:50px}
+  .section-header .kicker{display:inline-block;padding:8px 20px;border-radius:24px;background:rgba(139,90,60,.10);color:var(--cafecito);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+  .section-header h2{font-size:2.2rem;color:var(--cafecito);margin-bottom:14px}
+  .section-header p{color:var(--texto-suave);max-width:720px;margin:0 auto;font-size:1rem}
+
+  /* Filosofía */
+  .filosofia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+  .card{
+    background:var(--blanco);padding:32px 24px;border-radius:22px;border:1px solid var(--borde);text-align:center;
+    transition:all .25s;position:relative;overflow:hidden
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--cafecito),var(--mostaza))
+  }
+  .card .icon{width:52px;height:52px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff}
+  .mision .icon{background:var(--cafecito)}
+  .vision .icon{background:var(--cafe-medio)}
+  .eslogan-card .icon{background:var(--mostaza)}
+  .card h3{font-size:1.2rem;color:var(--cafecito);margin-bottom:12px}
+  .card p{font-size:0.92rem;color:var(--texto-suave);line-height:1.6}
+
+  /* Valores */
+  .valores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+  .valor{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:18px 12px;text-align:center;
+    font-size:0.85rem;font-weight:600;color:var(--texto-suave);transition:all .2s
+  }
+  .valor:hover{background:var(--beige-suave);color:var(--cafecito);border-color:var(--mostaza)}
+
+  /* Productos */
+  .linea-header{
+    text-align:center;margin-bottom:45px;padding:40px 24px;border-radius:24px;position:relative;overflow:hidden
+  }
+  .linea-header.cacao{background:linear-gradient(135deg,var(--beige),var(--beige-suave))}
+  .linea-header.maracuya{background:linear-gradient(135deg,var(--mostaza-claro),var(--mostaza))}
+  .linea-header h2{font-size:2rem;margin-bottom:10px}
+  .linea-header.cacao h2{color:var(--cafecito)}
+  .linea-header.maracuya h2{color:#fff}
+  .linea-header p{color:var(--texto-suave);font-size:0.95rem}
+  .linea-header.maracuya p{color:rgba(255,255,255,.92)}
+
+  .productos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+  .producto{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:22px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column
+  }
+  .producto:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.09);border-color:transparent}
+  .producto img{width:100%;height:230px;object-fit:cover;background:var(--crema)}
+  .producto.cacao{border-top:5px solid var(--cafecito)}
+  .producto.maracuya{border-top:5px solid var(--mostaza)}
+  .producto-info{padding:24px;display:flex;flex-direction:column;flex:1;position:relative}
+  .producto .tipo{display:inline-block;padding:6px 16px;border-radius:20px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+  .cacao .tipo{background:rgba(139,90,60,.12);color:var(--cafecito)}
+  .maracuya .tipo{background:rgba(212,160,23,.16);color:#b07a1e}
+  .producto h3{font-size:1.2rem;color:var(--cafecito);margin-bottom:10px}
+  .producto p{font-size:0.9rem;color:var(--texto-suave);margin-bottom:auto;flex:1}
+  .producto ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .producto li{font-size:0.86rem;color:var(--texto-suave);position:relative;padding-left:16px}
+  .producto li:before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--mostaza)}
+  .like-btn{
+    position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;background:var(--blanco);
+    border:1px solid var(--borde);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;color:var(--texto-suave);transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)
+  }
+  .like-btn:hover{background:var(--mostaza);color:#fff;border-color:var(--mostaza)}
+  .like-btn.liked{background:var(--mostaza);color:#fff;transform:scale(1.1)}
+
+  /* Likes list */
+  .likes-section{background:var(--blanco);border:1px solid var(--borde);border-radius:24px;padding:40px 30px}
+  .likes-section h3{font-size:1.4rem;color:var(--cafecito);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .likes-list{list-style:none;display:flex;flex-wrap:wrap;gap:14px}
+  .likes-list li{
+    background:var(--beige-suave);border:1px solid var(--borde);border-radius:14px;padding:10px 16px;
+    font-size:0.9rem;color:var(--texto-suave);display:flex;align-items:center;gap:8px
+  }
+  .likes-list li.empty{color:var(--texto-suave);font-style:italic;background:transparent;border:none;padding:0}
+
+  /* Equipo */
+  .equipo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px}
+  .miembro{
+    background:var(--blanco);border-radius:22px;text-align:center;padding:32px 20px;transition:all .25s;position:relative;overflow:hidden
+  }
+  .miembro:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.10)}
+  .miembro .foto{width:104px;height:104px;border-radius:50%;margin:0 auto 18px;background:var(--amarillo-pastel);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--cafecito);border:4px solid var(--piel-fuerte);box-shadow:0 0 20px rgba(194,154,116,.55)}
+  .miembro h3{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.3rem;color:var(--cafecito);margin-bottom:6px}
+  .miembro p{font-size:0.86rem;color:var(--texto-suave);margin-bottom:6px}
+  .miembro .cargo{font-size:0.8rem;color:var(--cafe-medio);font-weight:600}
+  .equipo-org{text-align:center;margin-top:40px}
+  .equipo-org img{max-width:750px;border-radius:20px;border:2px solid var(--borde);box-shadow:0 12px 36px rgba(0,0,0,.08)}
+
+  /* Redes */
+  .redes{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:22px;padding:40px;text-align:center
+  }
+  .redes h3{font-size:1.3rem;color:var(--cafecito);margin-bottom:12px}
+  .redes p{color:var(--texto-suave);margin-bottom:24px}
+  .redes-links{display:flex;justify-content:center;gap:24px}
+  .redes-links a{
+    width:56px;height:56px;border-radius:50%;background:var(--beige-suave);display:flex;align-items:center;justify-content:center;
+    color:var(--texto-suave);font-size:1.4rem;transition:all .25s;border:2px solid transparent
+  }
+  .redes-links a:hover{background:var(--cafecito);color:#fff;border-color:var(--cafecito);transform:translateY(-3px)}
+
+  /* Contacto */
+  .contacto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  .contacto-card{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:22px;padding:34px 26px
+  }
+  .contacto-card h3{font-size:1.15rem;color:var(--cafecito);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .contacto-card p,.contacto-card li{font-size:0.9rem;color:var(--texto-suave);margin-bottom:10px}
+  .contacto-card .nit-box{
+    margin-top:16px;padding:14px;background:var(--beige-suave);border-radius:14px;border:1px dashed var(--borde);font-size:0.88rem;color:var(--texto-suave)
+  }
+  .contacto-card .nit-box b{color:var(--cafecito)}
+
+  /* Footer */
+  footer{
+    background:var(--cafecito);color:#fff;padding:56px 0 32px
+  }
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:34px;margin-bottom:38px}
+  .footer-col h4{font-size:1rem;color:#fff;margin-bottom:18px;position:relative;padding-left:10px}
+  .footer-col h4::before{content:"";position:absolute;left:0;top:6px;width:4px;height:14px;background:var(--mostaza);border-radius:2px}
+  .footer-col p,.footer-col li{font-size:0.85rem;color:#d9cdbf;line-height:1.7;margin-bottom:8px}
+  .footer-bottom{border-top:1px solid rgba(217,205,191,.25);padding-top:24px;text-align:center;font-size:0.8rem;color:#b8a998}
+
+  /* Responsive */
+  @media(max-width:768px){
+    .hero-grid,.productos-grid,.equipo-grid,.contacto-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .btn-menu{display:block}
+    .hero h1{font-size:2.2rem}
+    .hero-image img{max-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container top-bar">
+    <div class="nit">NIT: <span id="nit-valor">[Por diligenciar]</span></div>
+    <div class="ubicacion"><span>Las Américas, Bogotá D.C.</span> · Colombia</div>
+  </div>
+  <div class="container nav">
+    <div class="logo" onclick="scrollToTop()">
+      <img src="Logo.png" alt="Logo Altheá Hair">
+      <div class="logo-text">Altheá<span>HAIR</span></div>
+      <div class="eslogan">Belleza real, cuidado esencial</div>
+    </div>
+    <button class="btn-menu" id="btnMenu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#productos">Productos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#redes">Redes</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button class="cart-btn" title="Carrito de mercado">
+      🛒
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <h1>Cuidado capilar con esencia botánica</h1>
+      <p>Productos a base de extractos botánicos y análisis tricológico para fuerza, brillo, hidratación y un cuero cabelludo sano.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToSection('#productos')">Conocer líneas</button>
+        <button class="btn btn-outline" onclick="scrollToSection('#nosotros')">Nuestra filosofía</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="Logo.png" alt="Logo Altheá Hair">
+      <div class="badge"><div class="dot"></div><span>SAS · Bogotá, Colombia</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros" class="filosofia">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Filosofía empresarial</span>
+      <h2>Misión, visión y valores</h2>
+      <p>Los principios que guían cada producto y cada asesoría en Altheá Hair SAS.</p>
+    </div>
+    <div class="filosofia-grid">
+      <div class="card mision">
+        <div class="icon">M</div>
+        <h3>Misión</h3>
+        <p>Trabajamos por el bienestar capilar de nuestros consumidores a través de productos a base de extractos botánicos y análisis tricológico, garantizando una asesoría completa para la correcta elección de nuestros productos y una satisfacción total.</p>
+      </div>
+      <div class="card vision">
+        <div class="icon">V</div>
+        <h3>Visión</h3>
+        <p>Posicionarnos en los próximos cinco años a nivel nacional como uno de los principales líderes en el cuidado capilar sostenible y la innovación, con gestión ambiental y cultural, rentabilidad y empleos inclusivos.</p>
+      </div>
+      <div class="card eslogan-card">
+        <div class="icon">E</div>
+        <h3>Eslogan</h3>
+        <p><strong>Belleza real, cuidado esencial</strong></p>
+      </div>
+    </div>
+    <div class="section-header" style="margin-top:40px">
+      <span class="kicker">Valores</span>
+      <h2>Nuestros valores</h2>
+      <p>Respeto, inclusión, conciencia ecológica, transparencia, altruismo, solidaridad y trabajo en equipo.</p>
+    </div>
+    <div class="valores-grid">
+      <div class="valor">Respeto</div>
+      <div class="valor">Inclusión</div>
+      <div class="valor">Conciencia ecológica</div>
+      <div class="valor">Transparencia</div>
+      <div class="valor">Altruismo</div>
+      <div class="valor">Solidaridad</div>
+      <div class="valor">Trabajo en equipo</div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Líneas capilares</span>
+      <h2>Dos líneas de productos</h2>
+      <p>Fórmulas con extractos botánicos diseñadas para distintas necesidades capilares.</p>
+    </div>
+
+    <div class="linea-header cacao">
+      <div class="deco-line-marca"></div>
+      <h2>Línea Cebada y Cacao</h2>
+      <p>Nutrición y fuerza para tu cabello con tonos tierra y calidez natural.</p>
+    </div>
+    <div class="productos-grid">
+      <div class="producto cacao">
+        <img src="cebada y cacao.jpg" alt="Cebada y cacao">
+        <button class="like-btn" data-product="Portada Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Portada</h3>
+          <p>Imagen representativa de la línea de cebada y cacao.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="acondicionador de cebada y cacao.jpg" alt="Acondicionador cebada y cacao">
+        <button class="like-btn" data-product="Acondicionador Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Acondicionador</h3>
+          <p>Hidratación y suavidad para el cabello.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="crema de peinar de cebada y cacao.jpg" alt="Crema de peinar cebada y cacao">
+        <button class="like-btn" data-product="Crema de peinar Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Crema de peinar</h3>
+          <p>Definición y control sin apelmazar.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="gel de cebada y cacao.jpg" alt="Gel cebada y cacao">
+        <button class="like-btn" data-product="Gel Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Gel</h3>
+          <p>Fijación natural con extractos botánicos.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="mascarilla de cebada y cacao.jpg" alt="Mascarilla cebada y cacao">
+        <button class="like-btn" data-product="Mascarilla Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Mascarilla</h3>
+          <p>Reparación profunda con cacao y cebada.</p>
+        </div>
+      </div>
+      <div class="producto cacao">
+        <img src="mousse de cebada y cacao.jpg" alt="Mousse cebada y cacao">
+        <button class="like-btn" data-product="Mousse Cebada y Cacao">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Cebada y Cacao</span>
+          <h3>Mousse</h3>
+          <p>Volumen y textura ligera.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">Entre extractos y naturaleza</div>
+
+    <div class="linea-header maracuya">
+      <div class="deco-line-marca"></div>
+      <h2>Línea Maracuyá</h2>
+      <p>Hidratación y vitalidad con el poder de la fruta de la pasión.</p>
+    </div>
+    <div class="productos-grid">
+      <div class="producto maracuya">
+        <img src="Gemini_Generated_Image_mgmmqkmgmmqkmgmm.jpg" alt="Maracuyá">
+        <button class="like-btn" data-product="Portada Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Portada</h3>
+          <p>Imagen representativa de la línea de maracuyá.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="Gemini_Generated_Image_vmb4aqvmb4aqvmb4.jpg" alt="Maracuyá">
+        <button class="like-btn" data-product="Imagen complementaria Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Imagen complementaria</h3>
+          <p>Frescura y vitalidad capilar.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="acondicionador de maracuya y almendra.jpg" alt="Acondicionador maracuyá">
+        <button class="like-btn" data-product="Acondicionador Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Acondicionador</h3>
+          <p>Hidratación y suavidad para el cabello.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="crema de peinar de maracuya y almendra.jpg" alt="Crema de peinar maracuyá">
+        <button class="like-btn" data-product="Crema de peinar Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Crema de peinar</h3>
+          <p>Definición y control del frizz.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="gel de maracuya y almendra.jpg" alt="Gel maracuyá">
+        <button class="like-btn" data-product="Gel Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Gel</h3>
+          <p>Fijación con toque natural.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="mascarilla de maracuya y almendra.jpg" alt="Mascarilla maracuyá">
+        <button class="like-btn" data-product="Mascarilla Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Mascarilla</h3>
+          <p>Nutrición intensiva con maracuyá.</p>
+        </div>
+      </div>
+      <div class="producto maracuya">
+        <img src="mousse de maracuya y almendra.jpg" alt="Mousse maracuyá">
+        <button class="like-btn" data-product="Mousse Maracuyá">♡</button>
+        <div class="producto-info">
+          <span class="tipo">Línea Maracuyá</span>
+          <h3>Mousse</h3>
+          <p>Volumen y textura aérea.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="likes-section" id="likes">
+  <div class="container">
+    <h3>💛 Tus productos favoritos</h3>
+    <ul class="likes-list" id="likes-list">
+      <li class="empty">Aún no has marcado ningún producto como favorito.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Detrás de Altheá</span>
+      <h2>Nuestro equipo</h2>
+      <p>Profesionales comprometidos con tu bienestar capilar.</p>
+    </div>
+    <div class="equipo-grid">
+      <div class="miembro">
+        <div class="foto">M</div>
+        <h3>Mariana Caro</h3>
+        <p>Dueña y abogada</p>
+        <p class="cargo">Gerencia General · Legal</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">J</div>
+        <h3>Juan Luis Ávila</h3>
+        <p>Contador</p>
+        <p class="cargo">Contabilidad</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">S</div>
+        <h3>Samuel Laverdé</h3>
+        <p>Publicista</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">Sa</div>
+        <h3>Sarah Hincapié</h3>
+        <p>Gerente administrativo</p>
+      </div>
+      <div class="miembro">
+        <div class="foto">Q</div>
+        <h3>Jailyn Prada</h3>
+        <p>Productora y química</p>
+        <p class="cargo">I+D y producción</p>
+      </div>
+    </div>
+    <div class="equipo-org">
+      <img src="organizacion.png" alt="Organigrama Altheá Hair">
+    </div>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="container">
+    <div class="redes">
+      <h3>Síguenos</h3>
+      <p>Espacio para las redes sociales de Altheá Hair SAS.</p>
+      <div class="redes-links">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-card">
+        <h3>Ubicación</h3>
+        <p><strong>Las Américas, Bogotá D.C., Colombia</strong></p>
+        <p>Punto clave y de fácil acceso para nuestros clientes.</p>
+        <div class="nit-box">
+          <b>NIT:</b> <span id="nit-contacto">[Por diligenciar]</span>
+        </div>
+      </div>
+      <div class="contacto-card">
+        <h3>Contacto</h3>
+        <p>Asesoría tricológica y venta de productos.</p>
+        <p>Escríbenos por WhatsApp o Instagram.</p>
+      </div>
+      <div class="contacto-card">
+        <h3>Propietarios</h3>
+        <ul>
+          <li>Mariana Caro — Dueña y abogada</li>
+          <li>Juan Luis Ávila — Contador</li>
+          <li>Samuel Laverdé — Publicista</li>
+          <li>Sarah Hincapié — Gerente administrativo</li>
+          <li>Jailyn Prada — Productora y química</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <img src="Logo.png" alt="Logo" style="height:36px;width:auto">
+          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.2rem;color:#fff">Altheá<span style="display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;color:#d9cdbf">HAIR</span></div>
+        </div>
+        <p style="font-size:0.8rem;color:#b8a998">Cuidado capilar con extractos botánicos y análisis tricológico.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <p>Altheá Hair SAS</p>
+        <p>Las Américas, Bogotá D.C., Colombia</p>
+        <p>NIT: <span id="nit-footer">[Por diligenciar]</span></p>
+      </div>
+      <div class="footer-col">
+        <h4>Filosofía</h4>
+        <p>Misión, visión y valores para el bienestar capilar sostenible.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Altheá Hair SAS. Belleza real, cuidado esencial. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const NIT = '';
+  const nitEls = document.querySelectorAll('#nit-valor, #nit-contacto, #nit-footer');
+  nitEls.forEach(el => el.textContent = NIT || '[Por diligenciar]');
+
+  const btnMenu = document.getElementById('btnMenu');
+  const navLinks = document.getElementById('navLinks');
+  btnMenu.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  function scrollToSection(selector){
+    document.querySelector(selector).scrollIntoView({behavior:'smooth'});
+  }
+  function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',e=>{
+      const target=document.querySelector(anchor.getAttribute('href'));
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+
+  /* Like system */
+  const likesList = document.getElementById('likes-list');
+  let likes = [];
+
+  document.querySelectorAll('.like-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const name = btn.getAttribute('data-product');
+      const isLiked = btn.classList.toggle('liked');
+      btn.textContent = isLiked ? '♥' : '♡';
+
+      if(isLiked){
+        likes.push(name);
+      } else {
+        likes = likes.filter(l => l !== name);
+      }
+      renderLikes();
+    });
+  });
+
+  function renderLikes(){
+    likesList.innerHTML = '';
+    if(likes.length === 0){
+      const li = document.createElement('li');
+      li.className = 'empty';
+      li.textContent = 'Aún no has marcado ningún producto como favorito.';
+      likesList.appendChild(li);
+      return;
+    }
+    likes.forEach(name=>{
+      const li = document.createElement('li');
+      li.innerHTML = '<span style="color:var(--mostaza);font-weight:700">♥</span>' + name;
+      likesList.appendChild(li);
+    });
+  }
+
+  /* Cart counter (visual only) */
+  let cart = 0;
+  const cartCount = document.getElementById('cart-count');
+  document.querySelector('.cart-btn').addEventListener('click',()=>{
+    cart++;
+    cartCount.textContent = cart;
+  });
+</script>
+
+</body>
+</html>
